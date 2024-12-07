@@ -136,6 +136,7 @@
                         <th>Ngày Mua</th>
                         <th>Thành Tiền</th>
                         <th>Thanh Toán</th>
+                        <th>Thay Đổi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,7 +146,12 @@
                         <td>29 Nguyễn Tri Phương, phường 6, quận 5, TPHCM</td>
                         <td>30/03/2021</td>
                         <td>650.000 VNĐ</td>
-                        <td>Đã Thanh Toán</td>
+                        <td><select name="thanhPho" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>
                     <tr>
                         <td>002</td>
@@ -153,7 +159,12 @@
                         <td>29 Nguyễn Tri Phương, phường 6, quận 5, TPHCM</td>
                         <td>28/02/2021</td>
                         <td>1.300.000 VNĐ</td>
-                        <td>Đã Thanh Toán</td>
+                        <td><select name="thanhToan" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>
                     <tr>
                         <td>003</td>
@@ -161,7 +172,12 @@
                         <td>29 Nguyễn Tri Phương, phường 6, quận 5, TPHCM</td>
                         <td>21/08/2021</td>
                         <td>470.000 VNĐ</td>
-                        <td>Chưa Thanh Toán</td>
+                        <td><select name="thanhToan" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>
                     <tr>
                         <td>004</td>
@@ -169,7 +185,12 @@
                         <td>62 Lý Thái Tổ, phường 9, quận 10, Đà Nẵng</td>
                         <td>15/01/2022</td>
                         <td>890.000 VNĐ</td>
-                        <td>Đã Thanh Toán</td>
+                        <td><select name="thanhToan" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>
                     <tr>
                         <td>005</td>
@@ -177,7 +198,12 @@
                         <td>30 Huỳnh Mẫn Đạt, phường 2, quận 5, Hà Nội</td>
                         <td>08/07/2023</td>
                         <td>1.200.000 VNĐ</td>
-                        <td>Chưa Thanh Toán</td>
+                        <td><select name="thanhToan" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>
                     <tr>
                         <td>006</td>
@@ -185,7 +211,12 @@
                         <td>16 Hùng Vương, phường 9, quận 10, Cần Thơ</td>
                         <td>20/10/2023</td>
                         <td>560.000 VNĐ</td>
-                        <td>Đã Thanh Toán</td>
+                        <td><select name="thanhToan" id="thanhToan">
+                            <option value="" disabled selected>Trạng Thái Đơn Hàng</option>
+                            <option value="HCM">Đã thanh toán</option>
+                            <option value="HN">Chưa thanh toán</option>
+                        </select></td>
+                        <td><button style="display: flex; align-items: center; justify-content: center; width: 70px; height: 40px; text-align: center; line-height: normal;" class="btn btn-primary btn-sm" onclick="luuDonHang()">Lưu</button></td>
                     </tr>                    
                 </tbody>
             </table>
@@ -266,13 +297,15 @@
     <script>
         function move() {
             var soNha = document.getElementById("soNha").value.trim(); // Lấy giá trị ô số nhà và loại bỏ khoảng trắng thừa
-
             if (soNha === "") {
                 alert("Vui lòng nhập số nhà!");
             } else {
                 window.location.href = 'manageSummary.html'; // Chuyển đến trang thống kê
             }
         }
+        function luuDonHang() {
+        alert("Đã lưu đơn hàng !");
+    }
     </script>
 </body>
 </html>
