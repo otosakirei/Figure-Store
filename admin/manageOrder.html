@@ -120,7 +120,7 @@
                 </div>
 
                 <!-- Nút thống kê -->
-                <a onclick="move()" class="thongKe">Thống kê</a>
+                <a onclick="move()" class="thongKe">Lọc</a>
             </div>
         </section>
 
@@ -298,9 +298,9 @@
         function move() {
             var soNha = document.getElementById("soNha").value.trim(); // Lấy giá trị ô số nhà và loại bỏ khoảng trắng thừa
             if (soNha === "") {
-                alert("Vui lòng nhập số nhà!");
+                alert("Vui lòng nhập địa chỉ !");
             } else {
-                window.location.href = 'manageSummary.html'; // Chuyển đến trang thống kê
+                window.location.href = 'manageOrder.html'; // Chuyển đến trang thống kê
             }
         }
         function luuDonHang() {
